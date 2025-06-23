@@ -5,6 +5,7 @@ import SupplyChainLeadership from "./pages/SupplyChainLeadership"
 import SupplyChainOperations from "./pages/SupplyChainOperations"
 import Finanace from "./pages/Finanace"
 import HeadOfFinance from "./pages/HeadOfFinance"
+import ProtectedRoute from "../ProtectedRoute"
 
 function App() {
   
@@ -13,10 +14,36 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/supply-chain-leadership" element={<SupplyChainLeadership />} />
-        <Route path="/supply-chain-operations" element={<SupplyChainOperations />} />
-        <Route path="finance" element={<Finanace />} />
-        <Route path="cfo/head-of-finance" element={<HeadOfFinance />} />
+        <Route 
+          path="/supply-chain-leadership" 
+          element={
+            <ProtectedRoute>
+              <SupplyChainLeadership/>
+            </ProtectedRoute>
+          }
+          />
+        <Route 
+          path="/supply-chain-operations"
+          element={
+            <ProtectedRoute>
+              <SupplyChainOperations />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/finance"
+          element={
+            <ProtectedRoute>
+              <Finanace/>
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/cfo/head-of-finance"
+          element={
+            <ProtectedRoute>
+              <HeadOfFinance />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   )

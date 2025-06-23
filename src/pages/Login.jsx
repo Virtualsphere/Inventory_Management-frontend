@@ -31,6 +31,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(`${BASE_URL}/auth/login`, formData);
+      sessionStorage.setItem('token',response.data.token);
       alert("Login successful!");
       console.log("Response:", response);
       switch (response.data.user.role_id) {
