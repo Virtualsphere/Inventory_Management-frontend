@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const SupplyChainLeadership = () => {
+const CPO = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -11,20 +11,20 @@ const SupplyChainLeadership = () => {
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
-      {/* Sidebar with Logout at Bottom */}
+      {/* Sidebar */}
       <div
         style={{
           width: "220px",
-          backgroundColor: "#d1fae5", // light green (tailwind's green-100)
+          backgroundColor: "#d1fae5",
           padding: "2rem 1rem",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between", // push logout button to bottom
+          justifyContent: "space-between",
           alignItems: "flex-start",
           boxShadow: "2px 0 5px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <div></div> {/* Empty div to occupy space at top */}
+        <div></div>
         <button
           onClick={handleLogout}
           style={{
@@ -42,27 +42,30 @@ const SupplyChainLeadership = () => {
         </button>
       </div>
 
-      {/* Power BI Iframe */}
+      {/* Fullscreen Power BI Iframe */}
       <div
         style={{
           flexGrow: 1,
-          padding: "2rem",
+          padding: "0",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          height: "100vh",
         }}
       >
         <iframe
-          title="Inventory"
-          width="1000"
-          height="673.5"
-          src="https://app.powerbi.com/view?r=eyJrIjoiM2M0NmQxZWYtMTQ5Ni00YzlmLThkNmQtZDc1ODBmYjI5ZTRjIiwidCI6ImEwOTgxODIzLWRmMTUtNDgyYi1iYTY3LWU3ZDI3YTYyZGZkOSJ9"
-          frameborder="0"
-          allowFullScreen="true"
+          title="CPO v2"
+          src="https://app.powerbi.com/view?r=eyJrIjoiY2MwOTgwNjYtMDQ4MC00MzhmLWFhNzUtNmYzMmJkMDQ4ZTIyIiwidCI6ImEwOTgxODIzLWRmMTUtNDgyYi1iYTY3LWU3ZDI3YTYyZGZkOSJ9" 
+          style={{
+            width: "100%",
+            height: "100%",
+            border: "none",
+          }}
+          allowFullScreen={true}
         ></iframe>
       </div>
     </div>
   );
 };
 
-export default SupplyChainLeadership;
+export default CPO;

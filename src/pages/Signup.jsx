@@ -23,6 +23,7 @@ const Signup = () => {
     { id: 2, label: "Supply Chain Operations" },
     { id: 3, label: "Finance" },
     { id: 4, label: "CFO/Head of Finance" },
+    { id:5, label: "CPO" }
   ];
 
   const handleChange = (e) => {
@@ -31,16 +32,21 @@ const Signup = () => {
   };
 
   const handleSignup = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(`${BASE_URL}/auth/register`, formData);
-      const data = response.data;
-      alert(response.data.message);
-      navigate("/");
-    } catch (error) {
-      alert(response.data.message);
+  e.preventDefault();
+  try {
+    const response = await axios.post(`${BASE_URL}/auth/register`, formData);
+    alert(response.data.message); // success message
+    navigate("/");
+  } catch (error) {
+    // Handle error response
+    if (error.response && error.response.data && error.response.data.message) {
+      alert(error.response.data.message); // show backend error like "User already exists"
+    } else {
+      alert("An unexpected error occurred. Please try again.");
     }
-  };
+  }
+};
+
 
   return (
     <div className="flex flex-col md:flex-row w-full ">
@@ -71,7 +77,7 @@ const Signup = () => {
 
         {/* Title */}
         <div className="text-left mb-4">
-          <p className="text-3xl font-bold">Sign up</p>
+          <p className="text-3xl font-bold">Create Account <span className="text-2xl text-blue-400">for end users</span></p>
           <p className="text-sm mt-2 text-gray-600">
             Create your account to start managing inventory and operations
           </p>

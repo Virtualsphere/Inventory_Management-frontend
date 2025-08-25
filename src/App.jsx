@@ -6,13 +6,22 @@ import SupplyChainOperations from "./pages/SupplyChainOperations"
 import Finanace from "./pages/Finanace"
 import HeadOfFinance from "./pages/HeadOfFinance"
 import ProtectedRoute from "../ProtectedRoute"
+import CPO from "./pages/CPO"
+import LandingPage from "./pages/LandingPage"
+import SuperAdmin from "./pages/SuperAdmin"
+import CompanyAdmin from "./pages/CompanyAdminAccount"
+import CompanyAdminLogin from "./pages/CompanyAdminLogin"
 
 function App() {
-  
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/super-admin/login" element={<SuperAdmin />} />
+        <Route path="/company-admin/login" element={<CompanyAdminLogin />} />
+        <Route path="/account/company-admin" element={<CompanyAdmin />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route 
           path="/supply-chain-leadership" 
@@ -41,6 +50,13 @@ function App() {
           element={
             <ProtectedRoute>
               <HeadOfFinance />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/cpo"
+          element={
+            <ProtectedRoute>
+              <CPO />
             </ProtectedRoute>
           }
         />

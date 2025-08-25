@@ -20,6 +20,7 @@ const Login = () => {
     { id: 2, label: "Supply Chain Operations" },
     { id: 3, label: "Finance" },
     { id: 4, label: "CFO/Head of Finance" },
+    { id:5, label: "CPO" }
   ];
 
   const handleChange = (e) => {
@@ -46,6 +47,9 @@ const Login = () => {
           break;
         case 4:
           navigate("/cfo/head-of-finance");
+          break;
+        case 5:
+          navigate("/CPO");
           break;
         default:
           console.warn("Unknown role. No redirection.");
